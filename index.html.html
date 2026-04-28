@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fairport Exterior Services</title>
+<meta name="description" content="Professional lawn care, leaf cleanup, snow removal & salt application in Fairport, NY. Residential & commercial. Starting at $40.">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --black:#0a0a09;
+  --dark:#111110;
+  --dark2:#181817;
+  --dark3:#202020;
+  --border:#262624;
+  --border2:#303030;
+  --green:#4a8f18;
+  --green2:#6ab52a;
+  --green3:#8fd44a;
+  --green-glow:rgba(74,143,24,0.18);
+  --text:#f0ede6;
+  --text2:#888880;
+  --text3:#444440;
+  --cream:#f0ede6;
+}
+
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'Instrument Sans',sans-serif;
+  background:var(--black);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.6;
+  cursor:none;
+}
+
+/* ── CUSTOM CURSOR ── */
+.cursor{
+  position:fixed;
+  width:10px;height:10px;
+  background:var(--green3);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:transform 0.1s,width 0.3s,height 0.3s,background 0.3s;
+  mix-blend-mode:screen;
+}
+.cursor-ring{
+  position:fixed;
+  width:36px;height:36px;
+  border:1px solid rgba(143,212,74,0.4);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:transform 0.18s ease,width 0.3s,height 0.3s,opacity 0.3s;
+}
+body:hover .cursor{opacity:1}
+
+/* ── NOISE OVERLAY ── */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:9997;
+  opacity:0.5;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:500;
+  padding:0 2.5rem;
+  height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(10,10,9,0.8);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+
+.logo{
+  font-family:'Syne',sans-serif;
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--text);
+  text-decoration:none;
+  display:flex;align-items:center;gap:10px;
+}
+
+.logo-mark{
+  width:24px;height:24px;
+  background:var(--green);
+  border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;
+  flex-shrink:0;
+}
+
+nav ul{list-style:none;display:flex;align-items:center;gap:2.5rem}
+nav a{
+  color:var(--text2);
+  text-decoration:none;
+  font-size:13px;
+  letter-spacing:0.5px;
+  transition:color 0.2s;
+}
+nav a:hover{color:var(--text)}
+
+.nav-cta{
+  background:var(--green) !important;
+  color:#fff !important;
+  padding:9px 22px;
+  border-radius:100px;
+  font-size:13px !important;
+  font-weight:500;
+  letter-spacing:0.3px;
+  transition:background 0.2s,transform 0.1s !important;
+}
+.nav-cta:hover{background:var(--green2) !important;transform:translateY(-1px)}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:none;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text2);border-radius:2px;transition:all 0.3s}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  padding-top:60px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-left{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:5rem 3rem 5rem 2.5rem;
+  position:relative;
+  z-index:2;
+  border-right:1px solid var(--border);
+}
+
+.hero-right{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:5rem 2.5rem 5rem 3rem;
+  position:relative;
+  z-index:2;
+}
+
+/* Green radial glow */
+.hero::after{
+  content:'';
+  position:absolute;
+  bottom:-200px;left:-200px;
+  width:700px;height:700px;
+  background:radial-gradient(circle, rgba(74,143,24,0.12) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--dark3);
+  border:1px solid var(--border2);
+  border-radius:100px;
+  padding:6px 14px;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--green3);
+  font-weight:500;
+  margin-bottom:2rem;
+  width:fit-content;
+}
+
+.hero-tag-dot{
+  width:6px;height:6px;
+  background:var(--green3);
+  border-radius:50%;
+  animation:blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink{
+  0%,100%{opacity:1}
+  50%{opacity:0.2}
+}
+
+h1{
+  font-family:'Syne',sans-serif;
+  font-weight:800;
+  font-size:clamp(52px,7vw,90px);
+  line-height:0.9;
+  letter-spacing:-2px;
+  margin-bottom:2rem;
+}
+
+h1 .line{display:block;overflow:hidden}
+h1 .line span{
+  display:block;
+  animation:slideUp 0.9s cubic-bezier(0.22,1,0.36,1) both;
+}
+h1 .line:nth-child(1) span{animation-delay:0.1s}
+h1 .line:nth-child(2) span{animation-delay:0.22s}
+h1 .line:nth-child(3) span{animation-delay:0.34s;color:var(--green3)}
+
+@keyframes slideUp{
+  from{transform:translateY(105%);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+
+.hero-sub{
+  color:var(--text2);
+  font-size:16px;
+  line-height:1.75;
+  max-width:400px;
+  margin-bottom:3rem;
+  animation:fadeIn 1s 0.5s both;
+}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+.hero-btns{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  animation:fadeIn 1s 0.65s both;
+}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;
+  border-radius:100px;
+  font-size:14px;
+  font-weight:500;
+  text-decoration:none;
+  transition:all 0.2s;
+  cursor:none;
+  letter-spacing:0.2px;
+}
+
+.btn-green{background:var(--green);color:#fff;border:1px solid transparent}
+.btn-green:hover{background:var(--green2);transform:translateY(-2px)}
+
+.btn-outline{background:transparent;color:var(--text2);border:1px solid var(--border2)}
+.btn-outline:hover{border-color:var(--text3);color:var(--text)}
+
+.btn-arrow{font-size:16px;transition:transform 0.2s}
+.btn-green:hover .btn-arrow{transform:translateX(4px)}
+
+/* Hero right — stats */
+.hero-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  animation:fadeIn 1s 0.3s both;
+}
+
+.stat{
+  background:var(--dark2);
+  padding:2rem;
+  transition:background 0.2s;
+}
+.stat:hover{background:var(--dark3)}
+
+.stat-num{
+  font-family:'Syne',sans-serif;
+  font-weight:800;
+  font-size:42px;
+  line-height:1;
+  color:var(--text);
+  margin-bottom:6px;
+  letter-spacing:-1px;
+}
+
+.stat-num sup{
+  font-family:'Instrument Sans',sans-serif;
+  font-size:18px;
+  font-weight:400;
+  vertical-align:super;
+  letter-spacing:0;
+}
+
+.stat-label{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:var(--text3);
+  font-weight:500;
+}
+
+.stat.accent{
+  grid-column:span 2;
+  background:var(--green-glow);
+  border-top:1px solid rgba(74,143,24,0.15);
+  display:flex;align-items:center;gap:1rem;
+  padding:1.25rem 2rem;
+}
+
+.stat.accent .stat-num{font-size:24px;color:var(--green3)}
+.stat.accent .stat-label{
+  font-size:13px;letter-spacing:0.3px;
+  text-transform:none;color:var(--text2);font-weight:400;
+  line-height:1.5;
+}
+
+/* ── TICKER ── */
+.ticker{
+  background:var(--green);
+  padding:10px 0;
+  overflow:hidden;
+  white-space:nowrap;
+  border-top:1px solid rgba(255,255,255,0.05);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.ticker-inner{
+  display:inline-flex;
+  animation:tick 22s linear infinite;
+}
+.ticker-inner:hover{animation-play-state:paused}
+.tick-item{
+  font-family:'Syne',sans-serif;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  padding:0 2.5rem;
+  color:rgba(255,255,255,0.85);
+}
+.tick-sep{color:rgba(255,255,255,0.3);padding:0 0.5rem}
+
+@keyframes tick{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+
+/* ── SERVICES ── */
+#services{
+  padding:7rem 0 5rem;
+  position:relative;
+}
+
+.services-top{
+  padding:0 2.5rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:3rem;
+  flex-wrap:wrap;
+  gap:1.5rem;
+}
+
+.section-eyebrow{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  color:var(--green3);
+  font-weight:500;
+  margin-bottom:0.75rem;
+  display:flex;align-items:center;gap:10px;
+}
+.section-eyebrow::before{
+  content:'';display:block;
+  width:20px;height:1px;
+  background:var(--green3);
+}
+
+.section-h{
+  font-family:'Syne',sans-serif;
+  font-weight:800;
+  font-size:clamp(36px,5vw,56px);
+  letter-spacing:-1px;
+  line-height:1;
+  color:var(--text);
+}
+
+.carousel-nav{
+  display:flex;gap:10px;flex-shrink:0;
+  align-items:center;
+}
+.carousel-btn{
+  width:42px;height:42px;
+  border:1px solid var(--border2);
+  border-radius:50%;
+  background:transparent;
+  color:var(--text2);
+  font-size:18px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:none;
+  transition:all 0.2s;
+}
+.carousel-btn:hover{border-color:var(--text3);color:var(--text);background:var(--dark3)}
+
+/* Carousel */
+.carousel-wrap{
+  position:relative;
+  overflow:hidden;
+  padding:0 2.5rem 1.5rem;
+}
+
+.carousel-track{
+  display:flex;
+  gap:16px;
+  transition:transform 0.55s cubic-bezier(0.22,1,0.36,1);
+  will-change:transform;
+  touch-action:pan-y;
+}
+
+.svc-card{
+  flex:0 0 320px;
+  background:var(--dark2);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:2.25rem;
+  position:relative;
+  overflow:hidden;
+  transition:border-color 0.3s,transform 0.3s;
+  cursor:none;
+  user-select:none;
+}
+
+.svc-card::before{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--green),var(--green3));
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+
+.svc-card:hover{border-color:var(--border2);transform:translateY(-4px)}
+.svc-card:hover::before{transform:scaleX(1)}
+
+.svc-num{
+  position:absolute;
+  top:1.5rem;right:1.75rem;
+  font-family:'Syne',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  color:var(--text3);
+  letter-spacing:2px;
+}
+
+.svc-icon{
+  width:52px;height:52px;
+  background:var(--dark3);
+  border:1px solid var(--border2);
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;
+  margin-bottom:1.5rem;
+  transition:background 0.3s,transform 0.3s;
+}
+
+.svc-card:hover .svc-icon{
+  background:var(--green-glow);
+  transform:scale(1.08) rotate(-3deg);
+}
+
+.svc-season{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:var(--green3);
+  font-weight:500;
+  margin-bottom:0.6rem;
+  opacity:0.7;
+}
+
+.svc-name{
+  font-family:'Syne',sans-serif;
+  font-weight:800;
+  font-size:22px;
+  letter-spacing:-0.5px;
+  margin-bottom:0.75rem;
+  color:var(--text);
+  line-height:1.1;
+}
+
+.svc-desc{
+  font-size:14px;
+  color:var(--text2);
+  line-height:1.7;
+  margin-bottom:1.5rem;
+}
+
+.svc-tags{display:flex;flex-wrap:wrap;gap:6px}
+.svc-tag{
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--border2);
+  color:var(--text3);
+  font-size:10px;
+  font-weight:500;
+  padding:4px 10px;
+  border-radius:100px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  transition:all 0.2s;
+}
+.svc-card:hover .svc-tag{
+  border-color:rgba(74,143,24,0.3);
+  color:var(--green3);
+}
+
+/* Dots */
+.carousel-dots{
+  display:flex;justify-content:center;gap:8px;
+  padding:1.5rem 0 0;
+}
+.dot{
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--border2);
+  transition:all 0.3s;
+  cursor:none;
+}
+.dot.active{
+  background:var(--green3);
+  width:20px;
+  border-radius:100px;
+}
+
+/* ── PRICING STRIP ── */
+#pricing{
+  padding:5rem 2.5rem;
+  background:var(--dark2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.pricing-inner{
+  max-width:1100px;margin:0 auto;
+}
+
+.pricing-top{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:3rem;flex-wrap:wrap;gap:1rem;
+}
+
+.pricing-note-inline{
+  font-size:13px;color:var(--text2);
+  max-width:300px;text-align:right;
+  line-height:1.6;
+}
+
+.pricing-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:1.25rem;
+}
+
+.price-tile{
+  background:var(--dark3);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:1.75rem;
+  display:flex;
+  flex-direction:column;
+  gap:0.5rem;
+  transition:border-color 0.2s,transform 0.2s;
+  position:relative;
+}
+.price-tile:hover{border-color:var(--border2);transform:translateY(-2px)}
+.price-tile.best{border-color:var(--green);border-width:1.5px}
+
+.price-tile-best-label{
+  position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  background:var(--green);color:#fff;
+  font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:3px 12px;border-radius:100px;white-space:nowrap;
+}
+
+.price-tier-name{
+  font-size:10px;text-transform:uppercase;
+  letter-spacing:2.5px;color:var(--text3);
+  font-weight:600;
+}
+
+.price-big{
+  font-family:'Syne',sans-serif;
+  font-weight:800;
+  font-size:54px;
+  line-height:1;
+  letter-spacing:-2px;
+}
+.price-big sup{
+  font-family:'Instrument Sans',sans-serif;
+  font-size:20px;font-weight:400;
+  vertical-align:super;letter-spacing:0;
+}
+
+.price-desc{font-size:13px;color:var(--text2);line-height:1.5}
+
+.price-incl{
+  margin-top:auto;
+  padding-top:1rem;
+  border-top:1px solid var(--border);
+  font-size:12px;
+  color:var(--green3);
+  display:flex;align-items:center;gap:6px;
+}
+.price-incl::before{content:'✓';font-weight:700}
+
+.pricing-footer{
+  background:var(--dark);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:1rem 1.5rem;
+  font-size:13px;color:var(--text2);
+  display:flex;align-items:center;gap:10px;
+  line-height:1.6;
+}
+.pricing-footer-icon{font-size:16px;flex-shrink:0}
+
+/* ── CONTACT (HERO-SIZED) ── */
+#contact{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;
+  overflow:hidden;
+}
+
+.contact-left{
+  background:var(--dark);
+  border-right:1px solid var(--border);
+  padding:5rem 3rem 5rem 2.5rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Big decorative number */
+.contact-left::before{
+  content:'?';
+  position:absolute;
+  bottom:-60px;right:-40px;
+  font-family:'Syne',sans-serif;
+  font-weight:800;
+  font-size:300px;
+  color:rgba(255,255,255,0.02);
+  line-height:1;
+  pointer-events:none;
+}
+
+.contact-left .section-h{
+  font-size:clamp(40px,5vw,64px);
+  margin-bottom:1.25rem;
+  letter-spacing:-1.5px;
+}
+
+.contact-tagline{
+  font-size:16px;color:var(--text2);
+  line-height:1.75;max-width:380px;
+  margin-bottom:3rem;
+}
+
+.contact-details-list{
+  display:flex;flex-direction:column;gap:12px;
+}
+
+.contact-det{
+  display:flex;align-items:center;gap:14px;
+  font-size:14px;color:var(--text2);
+}
+
+.contact-det-icon{
+  width:36px;height:36px;
+  background:var(--dark3);
+  border:1px solid var(--border2);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;flex-shrink:0;
+}
+
+.contact-right{
+  background:var(--dark2);
+  padding:5rem 2.5rem 5rem 3rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.form-title{
+  font-family:'Syne',sans-serif;
+  font-weight:800;
+  font-size:22px;
+  letter-spacing:-0.5px;
+  margin-bottom:2rem;
+  color:var(--text);
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.fg{display:flex;flex-direction:column;gap:6px}
+.fg.full{grid-column:span 2}
+
+label{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:var(--text3);
+  font-weight:600;
+}
+
+input,select,textarea{
+  font-family:'Instrument Sans',sans-serif;
+  font-size:14px;
+  background:var(--dark);
+  border:1px solid var(--border2);
+  border-radius:8px;
+  padding:12px 16px;
+  color:var(--text);
+  outline:none;
+  transition:border-color 0.2s,background 0.2s;
+  width:100%;
+  appearance:none;
+  -webkit-appearance:none;
+  cursor:none;
+}
+
+input:focus,select:focus,textarea:focus{
+  border-color:var(--green);
+  background:var(--dark3);
+}
+
+input::placeholder,textarea::placeholder{color:var(--text3)}
+textarea{resize:vertical;min-height:100px}
+
+select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23444440' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+  padding-right:36px;
+}
+
+.submit-btn{
+  width:100%;
+  background:var(--green);
+  color:#fff;
+  border:none;
+  border-radius:100px;
+  padding:16px;
+  font-family:'Syne',sans-serif;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:0.5px;
+  cursor:none;
+  transition:background 0.2s,transform 0.15s;
+  margin-top:4px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.submit-btn:hover{background:var(--green2);transform:translateY(-2px)}
+.submit-btn:active{transform:translateY(0)}
+
+.success-msg{
+  display:none;
+  text-align:center;
+  padding:3rem 2rem;
+}
+.success-icon{font-size:48px;display:block;margin-bottom:1rem}
+.success-text{
+  font-family:'Syne',sans-serif;
+  font-weight:700;font-size:22px;
+  color:var(--green3);margin-bottom:0.5rem;
+}
+.success-sub{font-size:14px;color:var(--text2)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--black);
+  border-top:1px solid var(--border);
+  padding:2rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+
+.footer-logo{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:13px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--text);text-decoration:none;
+}
+.footer-logo span{color:var(--green3)}
+
+footer p{font-size:12px;color:var(--text3)}
+
+/* ── MOBILE NAV MENU ── */
+ul.open{
+  display:flex !important;
+  flex-direction:column;
+  position:fixed;
+  top:60px;left:0;right:0;bottom:0;
+  background:var(--black);
+  padding:2.5rem;
+  gap:2rem;
+  z-index:490;
+  border-top:1px solid var(--border);
+}
+
+ul.open li{border-bottom:1px solid var(--border);padding-bottom:1.5rem}
+ul.open a{font-size:22px;font-family:'Syne',sans-serif;font-weight:700;color:var(--text2)}
+
+/* ── SCROLL REVEAL ── */
+.sr{opacity:0;transform:translateY(28px);transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1),transform 0.7s cubic-bezier(0.22,1,0.36,1)}
+.sr.in{opacity:1;transform:none}
+.sr-delay-1{transition-delay:0.1s}
+.sr-delay-2{transition-delay:0.2s}
+.sr-delay-3{transition-delay:0.3s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-left{border-right:none;border-bottom:1px solid var(--border);padding:4rem 1.5rem 3rem}
+  .hero-right{padding:3rem 1.5rem 4rem}
+  #contact{grid-template-columns:1fr}
+  .contact-left{border-right:none;border-bottom:1px solid var(--border);padding:4rem 1.5rem 3rem}
+  .contact-right{padding:3rem 1.5rem 4rem}
+  .pricing-row{grid-template-columns:1fr}
+  .pricing-note-inline{text-align:left}
+}
+
+@media(max-width:700px){
+  nav ul:not(.open){display:none}
+  .hamburger{display:flex}
+  .services-top{flex-direction:column;align-items:flex-start}
+  .svc-card{flex:0 0 280px}
+  .form-grid{grid-template-columns:1fr}
+  .fg.full{grid-column:span 1}
+  h1{font-size:clamp(44px,12vw,68px)}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  footer{flex-direction:column;align-items:flex-start}
+}
+
+@media(max-width:400px){
+  .svc-card{flex:0 0 calc(100vw - 3rem)}
+  .carousel-wrap{padding:0 1.5rem 1.5rem}
+  nav{padding:0 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-mark">🌿</div>
+    Fairport <span style="color:var(--green3);margin-left:6px">Exterior</span>
+  </a>
+  <ul id="navMenu">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote →</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>
+      Fairport, NY — Now Booking
+    </div>
+    <h1>
+      <span class="line"><span>Yards</span></span>
+      <span class="line"><span>Done</span></span>
+      <span class="line"><span>Right.</span></span>
+    </h1>
+    <p class="hero-sub">Professional lawn care, leaf cleanup, snow shoveling &amp; salt application — for homes and businesses across Fairport, NY.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-green">Get a Free Quote <span class="btn-arrow">→</span></a>
+      <a href="#services" class="btn btn-outline">See Services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num"><sup>$</sup>40</div>
+        <div class="stat-label">Starting Price</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Seasons</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Services</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Hidden Fees</div>
+      </div>
+      <div class="stat accent">
+        <div class="stat-num">✓</div>
+        <div class="stat-label">Weed whacking &amp; edging always included with every mow — no extra charge, ever.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="tick-item">Lawn Mowing</span><span class="tick-sep">✦</span>
+    <span class="tick-item">Edging</span><span class="tick-sep">✦</span>
+    <span class="tick-item">Weed Whacking</span><span class="tick-sep">✦</span>
+    <span class="tick-item">Leaf Cleanup</span><span class="tick-sep">✦</span>
+    <span class="tick-item">Snow Shoveling</span><span class="tick-sep">✦</span>
+    <span class="tick-item">Salt Application</span><span class="tick-sep">✦</span>
+    <span class="tick-item">Fairport NY</span><span class="tick-sep">✦</span>
+    <span class="tick-item">Residential &amp; Commercial</span><span class="tick-sep">✦</span>
+    <span class="tick-item">Lawn Mowing</span><span class="tick-sep">✦</span>
+    <span class="tick-item">Edging</span><span class="tick-sep">✦</span>
+    <span class="tick-item">Weed Whacking</span><span class="tick-sep">✦</span>
+    <span class="tick-item">Leaf Cleanup</span><span class="tick-sep">✦</span>
+    <span class="tick-item">Snow Shoveling</span><span class="tick-sep">✦</span>
+    <span class="tick-item">Salt Application</span><span class="tick-sep">✦</span>
+    <span class="tick-item">Fairport NY</span><span class="tick-sep">✦</span>
+    <span class="tick-item">Residential &amp; Commercial</span><span class="tick-sep">✦</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-top sr">
+    <div>
+      <p class="section-eyebrow">What We Do</p>
+      <h2 class="section-h">Our Services</h2>
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-btn" id="prevBtn" onclick="moveCarousel(-1)" aria-label="Previous">&#8592;</button>
+      <button class="carousel-btn" id="nextBtn" onclick="moveCarousel(1)" aria-label="Next">&#8594;</button>
+    </div>
+  </div>
+
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="carouselTrack">
+
+      <div class="svc-card">
+        <span class="svc-num">01</span>
+        <div class="svc-icon">🌿</div>
+        <p class="svc-season">Spring · Summer · Fall</p>
+        <h3 class="svc-name">Lawn Mowing</h3>
+        <p class="svc-desc">Reliable, consistent mowing to keep your lawn healthy, even, and looking sharp all season long.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Weekly available</span>
+          <span class="svc-tag">Residential</span>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <span class="svc-num">02</span>
+        <div class="svc-icon">✂️</div>
+        <p class="svc-season">Spring · Summer · Fall</p>
+        <h3 class="svc-name">Edging</h3>
+        <p class="svc-desc">Crisp, clean edges along driveways, walkways, and beds. Always included with every mow.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Always included</span>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <span class="svc-num">03</span>
+        <div class="svc-icon">🌾</div>
+        <p class="svc-season">Spring · Summer · Fall</p>
+        <h3 class="svc-name">Weed Whacking</h3>
+        <p class="svc-desc">Full trimming along fences, posts, and hard-to-reach spots — standard with every visit.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Always included</span>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <span class="svc-num">04</span>
+        <div class="svc-icon">🍂</div>
+        <p class="svc-season">Fall</p>
+        <h3 class="svc-name">Leaf Cleanup</h3>
+        <p class="svc-desc">Complete leaf removal to protect your lawn before winter. Quoted on-site by property size.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Seasonal</span>
+          <span class="svc-tag">Residential</span>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <span class="svc-num">05</span>
+        <div class="svc-icon">❄️</div>
+        <p class="svc-season">Winter</p>
+        <h3 class="svc-name">Snow Shoveling</h3>
+        <p class="svc-desc">Fast, thorough snow removal from driveways, walkways, and entries — homes and businesses.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Seasonal</span>
+          <span class="svc-tag">Commercial</span>
+          <span class="svc-tag">Residential</span>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <span class="svc-num">06</span>
+        <div class="svc-icon">🧂</div>
+        <p class="svc-season">Winter</p>
+        <h3 class="svc-name">Salt Application</h3>
+        <p class="svc-desc">Ice prevention and control for walkways, steps, and surfaces — any property type.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Seasonal</span>
+          <span class="svc-tag">Commercial</span>
+          <span class="svc-tag">Residential</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="carousel-dots" id="carouselDots"></div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-top sr">
+      <div>
+        <p class="section-eyebrow">No Surprises</p>
+        <h2 class="section-h">Pricing</h2>
+      </div>
+      <p class="pricing-note-inline">Edging &amp; weed whacking always included. Cash &amp; Venmo accepted.</p>
+    </div>
+    <div class="pricing-row sr sr-delay-1">
+      <div class="price-tile">
+        <p class="price-tier-name">Small Yard</p>
+        <div class="price-big"><sup>$</sup>40</div>
+        <p class="price-desc">Compact residential lots and smaller properties.</p>
+        <p class="price-incl">Edging &amp; weed whacking included</p>
+      </div>
+      <div class="price-tile best">
+        <div class="price-tile-best-label">Most Common</div>
+        <p class="price-tier-name">Standard Yard</p>
+        <div class="price-big"><sup>$</sup>50</div>
+        <p class="price-desc">Average residential lawn, full mow and trim.</p>
+        <p class="price-incl">Edging &amp; weed whacking included</p>
+      </div>
+      <div class="price-tile">
+        <p class="price-tier-name">Large / Complex</p>
+        <div class="price-big"><sup>$</sup>60</div>
+        <p class="price-desc">Large lots, hills, or complex layouts.</p>
+        <p class="price-incl">Edging &amp; weed whacking included</p>
+      </div>
+    </div>
+    <div class="pricing-footer sr sr-delay-2">
+      <span class="pricing-footer-icon">💬</span>
+      Leaf cleanup and snow removal are quoted on-site based on property size and conditions. Reach out for a free estimate.
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left">
+    <p class="section-eyebrow">Get in Touch</p>
+    <h2 class="section-h">Ready to get<br>a quote?</h2>
+    <p class="contact-tagline">Fill out the form and we'll get back to you within 24 hours. Not sure what you need — just describe your property and we'll handle the rest.</p>
+    <div class="contact-details-list">
+      <div class="contact-det"><div class="contact-det-icon">📍</div> Fairport, NY &amp; surrounding area</div>
+      <div class="contact-det"><div class="contact-det-icon">⚡</div> Response within 24 hours</div>
+      <div class="contact-det"><div class="contact-det-icon">💵</div> Cash &amp; Venmo accepted</div>
+      <div class="contact-det"><div class="contact-det-icon">🏠</div> Residential &amp; commercial welcome</div>
+    </div>
+  </div>
+
+  <div class="contact-right">
+    <p class="form-title">Send a Request</p>
+    <form id="contactForm" onsubmit="submitForm(event)" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="473c5ba2-9edc-4b29-8378-4297e3e374d6">
+      <input type="hidden" name="subject" value="New Quote Request — Fairport Exterior Services">
+      <input type="hidden" name="redirect" value="false">
+      <div class="form-grid">
+        <div class="fg">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Jane Smith" required>
+        </div>
+        <div class="fg">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" placeholder="(585) 555-0100">
+        </div>
+        <div class="fg full">
+          <label for="address">Address</label>
+          <input type="text" id="address" placeholder="123 Main St, Fairport, NY" required>
+        </div>
+        <div class="fg">
+          <label for="service">Service</label>
+          <select id="service" required>
+            <option value="" disabled selected>Select service</option>
+            <option>Lawn Mowing</option>
+            <option>Leaf Cleanup</option>
+            <option>Snow Shoveling</option>
+            <option>Salt Application</option>
+            <option>Multiple Services</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label for="size">Property Size</label>
+          <select id="size" required>
+            <option value="" disabled selected>Select size</option>
+            <option>Small ($40)</option>
+            <option>Standard ($50)</option>
+            <option>Large / Complex ($60)</option>
+            <option>Not sure</option>
+          </select>
+        </div>
+        <div class="fg full">
+          <label for="proptype">Property Type</label>
+          <select id="proptype">
+            <option value="" disabled selected>Select type</option>
+            <option>Residential</option>
+            <option>Commercial</option>
+          </select>
+        </div>
+        <div class="fg full">
+          <label for="msg">Message</label>
+          <textarea id="msg" placeholder="Any details about your property or what you need..."></textarea>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">Send Request <span>→</span></button>
+    </form>
+    <div class="success-msg" id="successMsg">
+      <span class="success-icon">✅</span>
+      <p class="success-text">Request Sent!</p>
+      <p class="success-sub">We'll get back to you within 24 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Fairport <span>Exterior</span> Services</a>
+  <p>© 2025 · Fairport, NY · All rights reserved</p>
+</footer>
+
+<script>
+// ── CURSOR ──
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx+'px';
+  cursor.style.top = my+'px';
+});
+
+function animRing(){
+  rx += (mx-rx)*0.12;
+  ry += (my-ry)*0.12;
+  ring.style.left = rx+'px';
+  ring.style.top = ry+'px';
+  requestAnimationFrame(animRing);
+}
+animRing();
+
+document.querySelectorAll('a,button,input,select,textarea,.svc-card,.price-tile,.stat').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.width='16px';cursor.style.height='16px';
+    ring.style.width='56px';ring.style.height='56px';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.width='10px';cursor.style.height='10px';
+    ring.style.width='36px';ring.style.height='36px';
+  });
+});
+
+// ── NAV ──
+function toggleNav(){
+  document.getElementById('navMenu').classList.toggle('open');
+}
+document.querySelectorAll('nav a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('navMenu').classList.remove('open'));
+});
+
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.borderBottomColor = window.scrollY > 30 ? 'rgba(74,143,24,0.2)' : '';
+});
+
+// ── CAROUSEL ──
+const track = document.getElementById('carouselTrack');
+const cards = track.querySelectorAll('.svc-card');
+const dotsWrap = document.getElementById('carouselDots');
+const cardCount = cards.length;
+let current = 0;
+let autoTimer;
+
+// Build dots
+cards.forEach((_,i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i===0?' active':'');
+  d.onclick = () => goTo(i);
+  dotsWrap.appendChild(d);
+});
+
+function getCardWidth(){
+  return cards[0].offsetWidth + 16; // card + gap
+}
+
+function goTo(idx){
+  current = ((idx % cardCount) + cardCount) % cardCount;
+  track.style.transform = `translateX(-${current * getCardWidth()}px)`;
+  document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===current));
+  resetAuto();
+}
+
+function moveCarousel(dir){ goTo(current + dir); }
+
+function resetAuto(){
+  clearInterval(autoTimer);
+  autoTimer = setInterval(() => goTo(current + 1), 5000);
+}
+
+resetAuto();
+
+// Touch/swipe
+let touchStartX = 0;
+track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
+track.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if(Math.abs(diff) > 40) moveCarousel(diff > 0 ? 1 : -1);
+});
+
+// Mouse drag
+let isDragging=false, dragStart=0;
+track.addEventListener('mousedown', e => { isDragging=true; dragStart=e.clientX; track.style.transition='none'; });
+window.addEventListener('mousemove', e => {
+  if(!isDragging) return;
+  const dx = dragStart - e.clientX;
+  track.style.transform = `translateX(-${current * getCardWidth() + dx}px)`;
+});
+window.addEventListener('mouseup', e => {
+  if(!isDragging) return;
+  isDragging=false;
+  track.style.transition='';
+  const diff = dragStart - e.clientX;
+  if(Math.abs(diff) > 60) moveCarousel(diff > 0 ? 1 : -1);
+  else track.style.transform = `translateX(-${current * getCardWidth()}px)`;
+});
+
+// Recalculate on resize
+window.addEventListener('resize', () => {
+  track.style.transform = `translateX(-${current * getCardWidth()}px)`;
+});
+
+// ── SCROLL REVEAL ──
+const srEls = document.querySelectorAll('.sr');
+const srObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); srObs.unobserve(e.target); } });
+}, {threshold:0.12});
+srEls.forEach(el => srObs.observe(el));
+
+// ── FORM ──
+async function submitForm(e){
+  e.preventDefault();
+  const btn = document.querySelector('.submit-btn');
+  btn.textContent = 'Sending...';
+  btn.style.opacity = '0.7';
+
+  const formData = new FormData(document.getElementById('contactForm'));
+  // Add named fields manually since inputs don't have name attributes
+  formData.set('Name', document.getElementById('name').value);
+  formData.set('Phone', document.getElementById('phone').value);
+  formData.set('Address', document.getElementById('address').value);
+  formData.set('Service', document.getElementById('service').value);
+  formData.set('Property Size', document.getElementById('size').value);
+  formData.set('Property Type', document.getElementById('proptype').value);
+  formData.set('Message', document.getElementById('msg').value);
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    });
+    const data = await res.json();
+    if(data.success){
+      document.getElementById('contactForm').style.display='none';
+      document.getElementById('successMsg').style.display='block';
+    } else {
+      btn.textContent = 'Try Again';
+      btn.style.opacity = '1';
+      alert('Something went wrong. Please try again.');
+    }
+  } catch(err){
+    btn.textContent = 'Try Again';
+    btn.style.opacity = '1';
+    alert('Network error. Please try again.');
+  }
+}
+</script>
+</body>
+</html>
